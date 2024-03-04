@@ -23,7 +23,7 @@ int main() {
   cout << "Copy elision \n";
   Matrix m6 = -m4;
   Matrix *pm = new Matrix(-m4);
-  cout << m6(2, 1) << endl;  // 32
+  cout << m6(2, 1) << endl;  // 32 // __jm__ doesn't make sense?
 
   cout << "Inheritance \n";
   MatrixWithLabel l0("B", 3, 4);
