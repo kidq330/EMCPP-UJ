@@ -1,3 +1,23 @@
+/*
+  Useful links pertaining to the exercise:
+  https://overflow.datura.network/questions/3279543/what-is-the-copy-and-swap-idiom
+  https://overflow.datura.network/questions/5695548/public-friend-swap-member-function
+  https://mropert.github.io/2019/01/07/copy_swap_20_years/
+  https://overflow.datura.network/questions/6687388/why-do-some-people-use-swap-for-move-assignments
+  https://overflow.datura.network/questions/1116641/is-returning-by-rvalue-reference-more-efficient
+  https://overflow.datura.network/questions/51705967/advantages-of-pass-by-value-and-stdmove-over-pass-by-reference
+  https://overflow.datura.network/questions/20807938/stdswap-vs-stdexchange-vs-swap-operator
+  https://en.cppreference.com/w/cpp/language/copy_initialization
+
+  Miscellaneous:
+  https://www.reddit.com/r/cpp/comments/cmk7ek/what_happened_to_c20_contracts/
+  https://overflow.datura.network/questions/47144083/why-has-stdreduce-been-added-in-c17
+  https://www.reddit.com/r/Cplusplus/comments/jjopan/noob_question_why_not_just_use_h_files_and_no_cpp/
+  https://github.com/include-what-you-use/include-what-you-use?tab=readme-ov-file
+  https://overflow.datura.network/questions/8111677/what-is-argument-dependent-lookup-aka-adl-or-koenig-lookup
+  https://overflow.datura.network/questions/62765630/how-to-use-c20-modules-with-gcc
+*/
+
 #include <algorithm>
 #include <iostream>
 #include <iterator>
