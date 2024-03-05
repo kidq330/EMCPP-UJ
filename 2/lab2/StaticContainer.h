@@ -14,7 +14,6 @@ class Container : public Box {
   Container(int content) : Box(content) {}
   Container(const Container &container) : Box(container) {
     if (verbose) cout << "Container: copy constructor.\n";
-    // __jm__ TODO
   }
   Container &operator=(const Container &container) {
     if (verbose) cout << "Container: copy assignment.\n";
