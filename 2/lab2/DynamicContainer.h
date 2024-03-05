@@ -26,10 +26,12 @@ class Container {
     }
     return *this;
   }
+
+  // __jm__ Should these be added?
   Container(Container &&container) : pbox(std::move(container.pbox)) {}
+
   Container &operator=(Container &&container) {
-    // *pbox = std::move(container).pbox; // __jm__ which is better?
-    pbox = std::move(container.pbox);
+    pbox = std::move(container).pbox;
     return *this;
   }
   ~Container() {
