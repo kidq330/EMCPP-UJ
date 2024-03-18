@@ -1,7 +1,11 @@
 #include <iostream>
 //-------------------------------------------
 /// ADD FORWARD DECLARATIONS HERE
+template <typename T, typename S>
+class Pair;
 
+template <typename T, typename S>
+std::ostream& operator<<(std::ostream& out, const Pair<T, S>& pair);
 //-------------------------------------------
 // DO NOT CHANGE CLASS Pair
 template <typename T, typename S>
@@ -30,6 +34,50 @@ class Pair {
 };
 //-------------------------------------------
 /// IMPLEMENTATION SECTION: Implement methods here
+template <typename T, typename S>
+int Pair<T, S>::numberOfPair = 0;
+
+template <typename T, typename S>
+Pair<T, S>::Pair(T first, S second) : first(first), second(second) {
+  ++numberOfPair;
+}
+
+template <typename T, typename S>
+template <typename P, typename R>
+Pair<T, S>::Pair(const Pair<P, R>& pair)
+    : first(pair.getFirst()), second(pair.getSecond()) {
+  ++numberOfPair;
+}
+
+template <typename T, typename S>
+Pair<T, S>::~Pair() {
+  --numberOfPair;
+}
+
+template <typename T, typename S>
+constexpr T Pair<T, S>::getFirst() const {
+  return first;
+}
+
+template <typename T, typename S>
+constexpr S Pair<T, S>::getSecond() const {
+  return second;
+}
+
+template <typename T, typename S>
+constexpr Pair<S, T> Pair<T, S>::reverse() const {
+  return Pair<S, T>(getSecond(), getFirst());
+}
+
+template <typename T, typename S>
+constexpr int Pair<T, S>::getNumberOfPairs() {
+  return Pair::numberOfPair;
+}
+
+template <typename T, typename S>
+std::ostream& operator<<(std::ostream& out, const Pair<T, S>& pair) {
+  return out << '(' << pair.getFirst() << ", " << pair.getSecond() << ')';
+}
 
 //-------------------------------------------
 using namespace std;
@@ -40,7 +88,8 @@ int main() {
   auto p2 = p.reverse();
   cout << p2 << endl;
   {
-    Pair<int, int> p3(p) cout << p3 << endl;
+    Pair<int, int> p3(p);
+    cout << p3 << endl;
     cout << Pair<int, int>::getNumberOfPairs() << endl;
   }
   cout << Pair<int, int>::getNumberOfPairs() << endl;
