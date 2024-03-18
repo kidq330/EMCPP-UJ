@@ -19,7 +19,7 @@ constexpr double average(Args&&... args) {
 
 template <typename... Args>
 constexpr void insert(auto& container, Args&&... args) {
-  (container.push_back(std::forward<Args>(args)), ...);
+  (container.push_back(args), ...);
 }
 
 int main() {
