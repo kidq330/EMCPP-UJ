@@ -28,3 +28,6 @@ int main() {
 
   return 0;
 }
+
+// TODO: driver needs more tests
+// solution needs more structure
