@@ -1,4 +1,5 @@
 #include <iostream>
+#include <typeindex>
 #include <typeinfo>
 // #include <boost/type_index.hpp>
 using namespace std;
@@ -12,11 +13,14 @@ double f(int x, double y, const int &z, int &w) {
 template <typename... Args>
 void showNames(Args &&...args) {
   size_t i = 1;
-  // TODO: doesn't forward perfectly :)
-  auto print = [&i](auto &&x) {
+  // gcc/clang typeid doesn't show ref/constrefness, and godbolt's msvc cannot
+  // deal with fold expressions.
+  // use this for testing:
+  // boost::typeindex::type_id_with_cvr<decltype(x)>().pretty_name()
+  auto print = [&i](auto x) {
     std::cout << i++ << " > " << typeid(x).name() << " = " << x << '\n';
   };
-  (print(std::forward<Args>(args)), ...);
+  (print(args), ...);
 }
 
 template <typename F>
@@ -32,11 +36,12 @@ class Proxy {
   }
 };
 
+// TODO: this isn't needed in clang++17 ???
 // template <typename F>
 // Proxy(F) -> Proxy<F>;
 
-template <typename F>
-auto make_proxy() {}
+// template <typename F>
+// auto make_proxy() {}
 
 int main() {
   int x = 4;
