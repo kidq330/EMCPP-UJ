@@ -81,11 +81,9 @@ int main() {
   /// change of step influences the function output.
   int start = 5, step = 2;
 
-  auto arithmeticGenerator = [start, &step, &v]() {
-    static int n = 0;
+  auto arithmeticGenerator = [n = 0, start, &step]() mutable {
     const auto val = start + n * step;
     ++n;
-    if (n == v.size()) n = 0;
     return val;
   };  // [ 4 ]
   std::generate(v.begin(), v.end(), arithmeticGenerator);
@@ -121,7 +119,7 @@ int main() {
   /// a function with one parameter x that computes
   /// a value of a polynomial of degree n with coefficients a at the point x.
   auto polynomial = [](double* a, int n) {
-    return [a, n](const auto& x) {
+    return [a, n](double x) {
       auto ret = 0;
       for (auto i = n; i >= 0; --i) {
         ret = ret * x + a[i];
